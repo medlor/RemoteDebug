@@ -39,7 +39,14 @@ extern "C" {
 #ifdef ESP8266
 #include <Hash.h>
 #elif defined(ESP32)
+
+//PERFECT COFFEE PID
+#if __has_include("esp32/sha.h") && __has_include(<esp32/sha.h>)
+#include <esp32/sha.h>
+#else
 #include <hwcrypto/sha.h>
+#endif
+
 #else
 
 extern "C" {
