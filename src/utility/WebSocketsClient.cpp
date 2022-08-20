@@ -700,13 +700,14 @@ void WebSocketsClient::connectedCb() {
 #if (WEBSOCKETS_NETWORK_TYPE == NETWORK_ESP8266)
     _client.tcp->setNoDelay(true);
 
-    if(_client.isSSL && _fingerprint.length()) {
-        if(!_client.ssl->verify(_fingerprint.c_str(), _host.c_str())) {
-            DEBUG_WEBSOCKETS("[WS-Client] certificate mismatch\n");
-            WebSockets::clientDisconnect(&_client, 1000);
-            return;
-        }
-    }
+    //PerfectCoffeePid: outdated lib. simple hack to remove this codeblock
+    //if(_client.isSSL && _fingerprint.length()) {
+    //    if(!_client.ssl->verify(_fingerprint.c_str(), _host.c_str())) {
+    //        DEBUG_WEBSOCKETS("[WS-Client] certificate mismatch\n");
+    //        WebSockets::clientDisconnect(&_client, 1000);
+    //        return;
+    //    }
+    //}
 #endif
 
     // send Header to Server
