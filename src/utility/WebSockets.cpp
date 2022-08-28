@@ -41,8 +41,9 @@ extern "C" {
 #elif defined(ESP32)
 
 //PERFECT COFFEE PID
-#if __has_include("esp32/sha.h") && __has_include(<esp32/sha.h>)
-#include <esp32/sha.h>
+#if __has_include("sha/sha_parallel_engine.h") && __has_include(<sha/sha_parallel_engine.h>)
+#include <sha/sha_parallel_engine.h>
+
 #else
 #include <hwcrypto/sha.h>
 #endif
